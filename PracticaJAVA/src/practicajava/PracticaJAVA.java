@@ -38,12 +38,21 @@ public class PracticaJAVA {
         System.out.println("3.- Ingresar Disco");
         System.out.println("4.- Ingresar Pelicula");
         
+        InputStreamReader  teclado_nro = new InputStreamReader(System.in);
+        BufferedReader  nro_entrada = new BufferedReader(teclado_nro);
+        
+        
         InputStreamReader lector = new InputStreamReader(System.in);
         BufferedReader   leer = new BufferedReader(lector);
 
         opcion = Integer.parseInt(leer.readLine());
         
-      
+        System.out.println("Ingrese Cantidad de artistas:");
+        max_artista = Integer.parseInt(nro_entrada.readLine());
+        
+         System.out.println("Ingrese cantidad de obras: ");
+         cantidadObra = Integer.parseInt(leer.readLine());
+         
          
         switch(opcion)
         {
