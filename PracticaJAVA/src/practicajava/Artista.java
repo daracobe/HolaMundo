@@ -8,37 +8,37 @@ package practicajava;
  *
  * @author Contreras Berbesi
  */
-public class artista {
-    
+public class Artista {
+
     private String nombre;
     private int anioNacimiento;
-  
-    
-    
-    public artista()
+
+
+
+    public Artista()
     {
-        
+
     }
 
-    public void setnombre(String nombre_a) 
+    public void setnombre(String nombre_a)
     {
        nombre = nombre_a;
-    
+
     }
-    
+
     public String getnombre()
     {
         return nombre;
     }
-    
+
     public void setanonacimiento(int anon)
     {
-        anon = anioNacimiento;  
+        anon = anioNacimiento;
     }
-     
+
     public int getanonacimiento()
     {
-        
+
         return anioNacimiento;
     }
 

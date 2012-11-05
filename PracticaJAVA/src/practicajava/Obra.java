@@ -8,46 +8,46 @@ package practicajava;
  *
  * @author Contreras Berbesi
  */
-public class obra {
-    
+public class Obra {
+
     private String titulo;
-    private artista autor;
+    private Artista autor;
     private int anioEdicion;
-   
-    
-    public obra(){
-        
+
+
+    public Obra(){
+
     }
-    
+
     public String getTitulo()
     {
         return titulo;
     }
-    
-    
+
+
     public void setTitulo(String nomTitulo)
     {
         titulo = nomTitulo;
     }
-    
-    public artista getAutor()
+
+    public Artista getAutor()
     {
         return autor;
     }
-    
-    public void setAutor(artista objArti)
+
+    public void setAutor(Artista objArti)
     {
         autor = objArti;
     }
-    
+
     public int getAnioEdicion()
     {
         return anioEdicion;
     }
-    
+
     public void setAnioEdicion(int anioE)
     {
         anioEdicion = anioE;
     }
-    
+
 }
