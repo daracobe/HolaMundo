@@ -4,10 +4,6 @@
  */
 package practicajava;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-
 /**
  *
  * @author Contreras Berbesi
@@ -19,59 +15,31 @@ public class artista {
   
     
     
-    public artista(String nomb, int anio)
+    public artista()
     {
-        nombre = nomb;
-        anioNacimiento = anio;
+        
+    }
+
+    public void setnombre(String nombre_a) 
+    {
+       nombre = nombre_a;
+    
     }
     
-    /**
-     *
-     * @return
-     */
-    public int getanonacimiento()
+    public String getnombre()
     {
-        return 0;
+        return nombre;
     }
     
     public void setanonacimiento(int anon)
     {
-        try
-        {
-            InputStreamReader  teclado = new InputStreamReader(System.in);
-            BufferedReader  anio_entrada = new BufferedReader(teclado);
-            System.out.println("Ingresar Año de nacimiento del artista:");
-            anioNacimiento = Integer.parseInt(anio_entrada.readLine());
-        }
-        catch (IOException ex){
-                    System.out.println("Error en artista");
-              }
-        
+        anon = anioNacimiento;  
     }
-    
-    public String getnombre(){
-        
-        
-      return null;
-    }
-    
-    public void setnombre() throws IOException
+     
+    public int getanonacimiento()
     {
-        try
-        {
-            InputStreamReader  teclado = new InputStreamReader(System.in);
-            BufferedReader  artista_entrada = new BufferedReader(teclado);
-            System.out.println("Ingresar Nombre del artista:");
-            nombre = artista_entrada.readLine();
-         }
-        catch (IOException ex){
-                    System.out.println("Error en artista");
-              }
         
-        
-    
-        
+        return anioNacimiento;
     }
-
 
 }

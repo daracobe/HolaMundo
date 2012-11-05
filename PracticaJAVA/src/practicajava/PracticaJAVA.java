@@ -20,6 +20,10 @@ public class PracticaJAVA {
     public static void main(String[] args) throws IOException {
         // TODO code application logic here
         
+        int max_artista = 0;
+        int nro_artista = 0;
+        String nombre_a = "";
+        int anio_Nacimiento = 0;
         int opcion = 0;
         int cantidadObra = 0;
         int cantidadArtista = 0;
@@ -29,6 +33,7 @@ public class PracticaJAVA {
         List<obra> listaObras = null ;
         artista objArtista;
         
+        System.out.println("1.- Ingresar Artista");
         System.out.println("2.- Ingresar Libro");
         System.out.println("3.- Ingresar Disco");
         System.out.println("4.- Ingresar Pelicula");
@@ -43,6 +48,18 @@ public class PracticaJAVA {
         switch(opcion)
         {
             case 1: 
+                while(nro_artista < max_artista)
+                {
+                  InputStreamReader  teclado = new InputStreamReader(System.in);
+                  BufferedReader  artista_entrada = new BufferedReader(teclado);
+                  System.out.println("Ingresar Nombre del artista:");
+                  nombre_a = artista_entrada.readLine();
+                  System.out.println("Ingresar Año de nacimiento del artista:");
+                  anio_Nacimiento = Integer.parseInt(artista_entrada.readLine());
+            
+                  nro_artista ++;
+                 }
+                
                 break;
                 
             case 2:
