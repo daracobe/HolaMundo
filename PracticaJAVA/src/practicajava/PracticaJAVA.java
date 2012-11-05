@@ -22,7 +22,9 @@ public class PracticaJAVA {
         
         int opcion = 0;
         int cantidadObra = 0;
+        String nombArtista = "";
         obra objObra;
+        artista objArtista;
         
         System.out.println("2.- Ingresar Libro");
         System.out.println("3.- Ingresar Disco");
@@ -36,6 +38,9 @@ public class PracticaJAVA {
          System.out.println("Ingrese cantidad de obras: ");
          cantidadObra = Integer.parseInt(leer.readLine());
          
+                 
+         System.out.println("Ingrese nombre del artista: ");
+         nombArtista = Integer.parseInt(leer.readLine());
          
         switch(opcion)
         {
@@ -43,6 +48,10 @@ public class PracticaJAVA {
                 break;
                 
             case 2:
+                for(int )
+                {
+                    
+                }
                 for(int cObra = 0 ; cObra < cantidadObra; cObra++)
                 {
                     
