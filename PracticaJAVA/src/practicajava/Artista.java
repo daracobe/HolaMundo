@@ -31,6 +31,10 @@ public class Artista {
         return nombre;
     }
 
+    /**
+     *
+     * @param anon
+     */
     public void setanonacimiento(int anon)
     {
         anon = anioNacimiento;

@@ -31,8 +31,9 @@ public class PracticaJAVA {
         int anioEdicion = 0;
 
         List<Obra> listaObras = null ;
+        List<Artista> listaArtista = null;
 
-        Artista objArtista;
+        Artista auxArtista = new Artista();
 
         System.out.println("1.- Ingresar Artista");
         System.out.println("2.- Sub-menu de Obras");
@@ -47,8 +48,8 @@ public class PracticaJAVA {
         System.out.println("Ingrese Cantidad de artistas:");
         max_artista = Integer.parseInt(leer.readLine());
 
-         System.out.println("Ingrese cantidad de obras: ");
-         cantidadObra = Integer.parseInt(leer.readLine());
+        System.out.println("Ingrese cantidad de obras: ");
+        cantidadObra = Integer.parseInt(leer.readLine());
 
         switch(opcion)
         {
@@ -57,10 +58,14 @@ public class PracticaJAVA {
                 {
                   System.out.println("Ingresar Nombre del artista:");
                   nombre_a = leer.readLine();
+                  
                   System.out.println("Ingresar Año de nacimiento del artista:");
                   anio_Nacimiento = Integer.parseInt(leer.readLine());
 
                   nro_artista ++;
+                  
+                  auxArtista.setnombre(nombre_a);
+                  auxArtista.setanonacimiento(anio_Nacimiento);
                  }
 
                 break;
@@ -81,6 +86,9 @@ public class PracticaJAVA {
                 for(int cArtis = 0; cArtis < cantidadArtista; cArtis++)
                 {
                     //objArtista = ;
+                    auxArtista.getnombre();
+                    auxArtista.getanonacimiento();
+                    listaArtista.add(auxArtista);
                 }
                 //Creo el objeto Obra para esa Artista
                 for(int cObra = 0 ; cObra < cantidadObra; cObra++)
@@ -119,7 +127,7 @@ public class PracticaJAVA {
 
             switch (opcion){
                 case 1:
-                    System.out.println("Ingrese cantidad de libros a cargar");
+                    System.out.println("Ingrese cantidad de libros a cargar: ");
                     maximoElementos = Integer.parseInt(leer.readLine());
                     listaLibros = new ArrayList<Libro>();
 
@@ -134,7 +142,7 @@ public class PracticaJAVA {
 
                 case 2:
                     String tituloBuscar ;
-                    System.out.println("Ingrese el título del libro a buscar");
+                    System.out.println("Ingrese el título del libro a buscar: ");
                     tituloBuscar = leer.readLine().toLowerCase();
 
                     libro = new Libro();
@@ -143,7 +151,7 @@ public class PracticaJAVA {
 
                 case 3:
                     String editorialBuscar ;
-                    System.out.println("Ingrese el nombre de la editorial a consultar");
+                    System.out.println("Ingrese el nombre de la editorial a consultar: ");
                     editorialBuscar = leer.readLine().toLowerCase();
 
                     libro = new Libro();
@@ -151,7 +159,7 @@ public class PracticaJAVA {
                     break;
 
                 default:
-                    System.out.println("Opción Inválida intente de nuevo");
+                    System.out.println("Opción Inválida, intente de nuevo: ");
                     break;
             }
         }while(opcion != 9);
