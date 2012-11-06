@@ -4,6 +4,10 @@
  */
 package practicajava;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 /**
  *
  * @author Contreras Berbesi
@@ -50,4 +54,12 @@ public class Obra {
         anioEdicion = anioE;
     }
 
+    public void cargarDatos() throws IOException{
+        BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
+
+        System.out.println("Ingrese titulo de la obra");
+        this.titulo = leer.readLine();
+        System.out.println("Ingrese año de edicion");
+        this.anioEdicion = Integer.parseInt(leer.readLine());
+    }
 }
