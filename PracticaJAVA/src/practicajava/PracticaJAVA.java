@@ -5,7 +5,6 @@
 package practicajava;
 
 import java.io.*;
-import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,12 +21,12 @@ public class PracticaJAVA {
 
         int max_artista = 0;
         int nro_artista = 0;
-        String nombre_a = "";
+        int anioEdicion = 0;
         int anio_Nacimiento = 0;
         int opcion = 0;
-  
+        String nombre_a = "";
         String titulo = "";
-        int anioEdicion = 0;
+        
 
         
         List<Artista> listaArtista = null;
@@ -52,6 +51,7 @@ public class PracticaJAVA {
                 listaArtista = new ArrayList<Artista>();
                 System.out.println("Ingrese Cantidad de artistas:");
                 max_artista = Integer.parseInt(leer.readLine());
+                
                 while(nro_artista < max_artista)
                 {
                   System.out.println("Ingresar Nombre del artista:");
@@ -89,7 +89,8 @@ public class PracticaJAVA {
     }
 
    static public void subMenuObra() throws IOException {
-        int opcion, maximoElementos;
+        int opcion = 0;
+        int maximoElementos = 0;
         Libro libro;
 
         InputStreamReader lector = new InputStreamReader(System.in);
