@@ -10,6 +10,7 @@ import java.util.List;
  */
 public class Libro extends Obra {
     private String editorial;
+    private String artista_nombre;
     private int nPaginas;
 
     Libro(){
@@ -51,6 +52,7 @@ public class Libro extends Obra {
     }
 
     void imprimir( ){
+        System.out.println("Artista: " + this.artista_nombre);
         System.out.println("Titulo: " + this.getTitulo( ) );
         //System.out.println("Author: " + this.getAutor().getnombre() ); <--- Descomentar al agregar la funcionalidad
         System.out.println("Año de edición:  " + this.getAnioEdicion() );
@@ -58,11 +60,12 @@ public class Libro extends Obra {
         System.out.println("Cantidad de páginas: " + this.getNPaginas() );
     }
 
-    @Override
-    public void cargarDatos() throws IOException{
+    
+    public void cargarDatos(Artista nombre_artista) throws IOException{
         BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
         super.cargarDatos();
-
+        this.artista_nombre = nombre_artista.getnombre();
+       
         System.out.println("Ingrese editorial");
         this.editorial = leer.readLine();
         System.out.println("Ingrese número de páginas");

@@ -20,6 +20,7 @@ import java.util.List;
 public class PracticaJAVA {
 
     static public List<Libro> listaLibros = null;
+    private static Artista Artista;
 
     public static void main(String[] args) throws IOException {
 
@@ -124,7 +125,8 @@ public class PracticaJAVA {
                     for (int i = 0; i < maximoElementos; i++) {
                        
                         libro = new Libro();
-                        libro.cargarDatos();
+                        //Enviarle a libros el artista
+                        libro.cargarDatos(objArtista);
                         listaLibros.add(libro);
                     }
 
@@ -168,7 +170,7 @@ public class PracticaJAVA {
         System.out.println("Ingrese cantidad de obras: ");
         cantidadObra = Integer.parseInt(leer.readLine());
               
-        System.out.println("Ingrese nombre del artista de la obra: ");
+        System.out.println("Ingrese nombre del artista de las obras: ");
         nombArtista = leer.readLine();
             
         int posArtista = 0;
