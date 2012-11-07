@@ -43,4 +43,13 @@ public class Pelicula extends Obra {
         System.out.println("Interpretes: " + this.getInterpretes());
         System.out.println("Productora: " + this.getProductora());
     }
+    
+    public void cargarDatos() throws IOException{
+        BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
+        super.cargarDatos();
+        System.out.println("Ingrese Productora: ");
+        this.productora = leer.readLine();
+        System.out.println("Ingrese Interpretes: ");
+        //this.interpretes = leer.readLine();
+    }
 }
