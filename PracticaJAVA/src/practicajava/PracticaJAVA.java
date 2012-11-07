@@ -34,11 +34,13 @@ public class PracticaJAVA {
         List<Artista> listaArtista = null;
 
         Artista auxArtista = new Artista();
-
+        
+    do{
         System.out.println("1.- Ingresar Artista");
         System.out.println("2.- Sub-menu de Obras");
         System.out.println("3.- Ingresar Disco");
         System.out.println("4.- Ingresar Pelicula");
+        System.out.println("5.- Salir");
 
         InputStreamReader lector = new InputStreamReader(System.in);
         BufferedReader   leer = new BufferedReader(lector);
@@ -47,9 +49,6 @@ public class PracticaJAVA {
 
         System.out.println("Ingrese Cantidad de artistas:");
         max_artista = Integer.parseInt(leer.readLine());
-
-        System.out.println("Ingrese cantidad de obras: ");
-        cantidadObra = Integer.parseInt(leer.readLine());
 
         switch(opcion)
         {
@@ -111,6 +110,7 @@ public class PracticaJAVA {
             default:
                 System.out.println("Opción inválida.");
         }
+        while(opcion != 5);
     }
 
    static public void subMenuObra() throws IOException {
