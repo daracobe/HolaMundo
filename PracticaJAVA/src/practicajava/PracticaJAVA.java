@@ -54,6 +54,8 @@ public class PracticaJAVA {
         switch(opcion)
         {
             case 1:
+                listaArtista = new ArrayList<Artista>();
+                
                 while(nro_artista < max_artista)
                 {
                   System.out.println("Ingresar Nombre del artista:");
@@ -66,6 +68,9 @@ public class PracticaJAVA {
                   
                   auxArtista.setnombre(nombre_a);
                   auxArtista.setanonacimiento(anio_Nacimiento);
+                  
+                  //FALTABA ESTO
+                  listaArtista.add(auxArtista);
                  }
 
                 break;
@@ -81,20 +86,25 @@ public class PracticaJAVA {
 
                 System.out.println("Ingrese nombre del artista de la obra: ");
                 nombArtista = leer.readLine();
-
+                int posArtista = 0;
                 //Busco el Artista a asignar la Obra
                 for(int cArtis = 0; cArtis < cantidadArtista; cArtis++)
                 {
                     //objArtista = ;
-                    auxArtista.getnombre();
-                    auxArtista.getanonacimiento();
-                    listaArtista.add(auxArtista);
+                    if(listaArtista.get(cArtis).getnombre().equals(nombre_a))
+                    {
+                        posArtista = cArtis;
+                        break;
+                    }
                 }
                 //Creo el objeto Obra para esa Artista
                 for(int cObra = 0 ; cObra < cantidadObra; cObra++)
                 {
                     Obra auxObra = new Obra();
                     auxObra.cargarDatos();
+                    // Le envio a la clase Obra, el objeto del artista correspondiente
+                    // Ubicado en la lista de  clase Artista
+                    auxObra.setAutor(listaArtista.get(posArtista));
                     listaObras.add(auxObra);
                 }
 
