@@ -11,7 +11,11 @@ import java.util.List;
 
 /**
  *
- * @author Contreras Berbesi
+ * @author Caceres Oswaldo
+ * @author Contreras Dariana
+ * @author Duque Fidel
+ * @author Galvis Mayra
+ * @author Useche Miguel
  */
 public class PracticaJAVA {
 
@@ -35,7 +39,7 @@ public class PracticaJAVA {
         
     do{
         System.out.println("1.- Ingresar Artista");
-        System.out.println("2.- Sub-menu de Obras");
+        System.out.println("2.- Ingresar Obras");
         System.out.println("3.- Ingresar Disco");
         System.out.println("4.- Ingresar Pelicula");
         System.out.println("5.- Salir");
