@@ -13,7 +13,7 @@ public class Libro extends Obra {
     private int nPaginas;
 
     Libro(){
-
+            
     }
 
     Libro ( String title, Artista author, int anioEdicion, String edit, int paginas ){
