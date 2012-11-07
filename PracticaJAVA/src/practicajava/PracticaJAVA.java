@@ -5,6 +5,7 @@
 package practicajava;
 
 import java.io.*;
+import java.util.AbstractList;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,13 +25,11 @@ public class PracticaJAVA {
         String nombre_a = "";
         int anio_Nacimiento = 0;
         int opcion = 0;
-        int cantidadObra = 0;
-        int cantidadArtista = 0;
-        String nombArtista = "";
+  
         String titulo = "";
         int anioEdicion = 0;
 
-        List<Obra> listaObras = null ;
+        
         List<Artista> listaArtista = null;
 
         Artista auxArtista = new Artista();
@@ -47,14 +46,12 @@ public class PracticaJAVA {
 
         opcion = Integer.parseInt(leer.readLine());
 
-        System.out.println("Ingrese Cantidad de artistas:");
-        max_artista = Integer.parseInt(leer.readLine());
-
         switch(opcion)
         {
             case 1:
                 listaArtista = new ArrayList<Artista>();
-                
+                System.out.println("Ingrese Cantidad de artistas:");
+                max_artista = Integer.parseInt(leer.readLine());
                 while(nro_artista < max_artista)
                 {
                   System.out.println("Ingresar Nombre del artista:");
@@ -75,42 +72,20 @@ public class PracticaJAVA {
                 break;
 
             case 2:
+                asignarObra(listaArtista);
                 subMenuObra();
                 break;
 
             case 3:
             case 4:
-                System.out.println("Ingrese cantidad de obras: ");
-                cantidadObra = Integer.parseInt(leer.readLine());
-
-                System.out.println("Ingrese nombre del artista de la obra: ");
-                nombArtista = leer.readLine();
-                int posArtista = 0;
-                //Busco el Artista a asignar la Obra
-                for(int cArtis = 0; cArtis < cantidadArtista; cArtis++)
-                {
-                    //objArtista = ;
-                    if(listaArtista.get(cArtis).getnombre().equals(nombre_a))
-                    {
-                        posArtista = cArtis;
-                        break;
-                    }
-                }
-                //Creo el objeto Obra para esa Artista
-                for(int cObra = 0 ; cObra < cantidadObra; cObra++)
-                {
-                    Obra auxObra = new Obra();
-                    auxObra.cargarDatos();
-                    // Le envio a la clase Obra, el objeto del artista correspondiente
-                    // Ubicado en la lista de  clase Artista
-                    auxObra.setAutor(listaArtista.get(posArtista));
-                    listaObras.add(auxObra);
-                }
+                
 
             default:
                 System.out.println("Opción inválida.");
+        
         }
-        while(opcion != 5);
+                
+        }while(opcion != 5);
     }
 
    static public void subMenuObra() throws IOException {
@@ -173,5 +148,44 @@ public class PracticaJAVA {
                     break;
             }
         }while(opcion != 9);
+    }
+
+    private static void asignarObra(List<Artista> listArtista) throws IOException {
+        
+        int cantidadObra;
+        String nombArtista;
+        List<Obra> listaObras = new ArrayList<Obra>() ;
+          
+        InputStreamReader lector = new InputStreamReader(System.in);
+        BufferedReader   leer = new BufferedReader(lector);
+        
+        System.out.println("Ingrese cantidad de obras: ");
+        cantidadObra = Integer.parseInt(leer.readLine());
+              
+        System.out.println("Ingrese nombre del artista de la obra: ");
+        nombArtista = leer.readLine();
+            
+        int posArtista = 0;
+        
+        //Busco el Artista a asignar la Obra
+        for(int cArtis = 0; cArtis < listArtista.size(); cArtis++)
+        {
+           
+            if(listArtista.get(cArtis).getnombre().equals(nombArtista))
+            {
+                posArtista = cArtis;
+                break;
+            }
+        }
+        //Creo el objeto Obra para esa Artista
+        for(int cObra = 0 ; cObra < cantidadObra; cObra++)
+        {
+            Obra auxObra = new Obra();
+            auxObra.cargarDatos();
+            // Le envio a la clase Obra, el objeto del artista correspondiente
+            // Ubicado en la lista de  clase Artista
+            auxObra.setAutor(listArtista.get(posArtista));
+            listaObras.add(auxObra);
+        }
     }
 }
