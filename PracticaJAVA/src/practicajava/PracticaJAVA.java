@@ -42,7 +42,7 @@ public class PracticaJAVA {
         System.out.println("2.- Ingresar Obras");
         System.out.println("3.- Ingresar Disco");
         System.out.println("4.- Ingresar Pelicula");
-        System.out.println("5.- Salir");
+        System.out.println("5.- Salir" + "\n");
 
         InputStreamReader lector = new InputStreamReader(System.in);
         BufferedReader   leer = new BufferedReader(lector);
@@ -102,7 +102,8 @@ public class PracticaJAVA {
 
         do {
             System.out.println("Sub-menú de Obra");
-            System.out.println("==");
+            //System.out.println("==");
+            System.out.println("\n");
             System.out.println(" Obra");
             System.out.println("    1.- Crear libro");
             System.out.println("    2.- Buscar libro");
