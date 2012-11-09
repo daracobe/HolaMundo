@@ -33,11 +33,17 @@ public class Libro extends Obra {
         this.editorial = edit;
     }
 
-    static Libro[] crearLibro(int cantidad){
+    static Libro[] crearLibro(int cantidad) throws IOException{
         Libro[] vector = new  Libro[cantidad];
-
+        Artista artista = new Artista();
+        BufferedReader lector = new BufferedReader(new InputStreamReader(System.in));
+        
         for(int i = 0; i < vector.length; i++){
+                vector[i] = new Libro();
 
+                System.out.println("Ingrese el nombre del artista del libro");
+                artista.setnombre(lector.readLine());
+                vector[i].cargarDatos(artista);
         }
 
         return vector;
