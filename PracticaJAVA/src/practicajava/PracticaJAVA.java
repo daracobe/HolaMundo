@@ -20,6 +20,7 @@ import java.util.List;
 public class PracticaJAVA {
 
     private static List<Libro> listaLibros = null;
+    private static List<Pelicula> listaPeliculas = null;
     private static Artista Artista;
 
     public static void main(String[] args) throws IOException {
@@ -80,6 +81,9 @@ public class PracticaJAVA {
                 break;
 
             case 3:
+                auxArtista = asignarObra(listaArtista);
+                subMenuPelicula(auxArtista);
+                break;
             case 4:
 
 
@@ -153,6 +157,54 @@ public class PracticaJAVA {
                     break;
             }
         }while(opcion != 9);
+    }
+   
+   static public void subMenuPelicula(Artista objArtista) throws IOException {
+        int opcion = 0;
+        int CantPeliculas = 0;
+        Pelicula peli = new Pelicula();
+        InputStreamReader lector = new InputStreamReader(System.in);
+        BufferedReader leer = new BufferedReader(lector);
+
+        do {
+            System.out.println("Sub-menú de Película\n");
+            System.out.println(" 1.- Crear Película");
+            System.out.println(" 2.- Buscar Película");
+            System.out.println(" 3.- Consultar Productora");
+            System.out.println(" 4.- Salir");
+
+            opcion = Integer.parseInt( leer.readLine() );
+
+            switch (opcion){
+                case 1:
+                    System.out.println("Ingrese cantidad de peliculas a cargar: ");
+                    CantPeliculas = Integer.parseInt(leer.readLine());
+                    listaPeliculas = new ArrayList<Pelicula>();
+                    for (int cPeli = 0; cPeli < CantPeliculas; cPeli++) {
+                        peli.cargarDatos(objArtista);
+                        listaPeliculas.add(peli);
+                    }
+                    System.out.println("¡Carga exitosa!");
+                    break;
+                case 2:
+                    String PeliculaBuscar ;
+                    System.out.println("Ingrese nombre de la Película a buscar: ");
+                    PeliculaBuscar = leer.readLine().toLowerCase();
+                    peli.BuscarPelicula(PeliculaBuscar, listaPeliculas);
+                    break;
+
+                case 3:
+                    String ProductoraBuscar ;
+                    System.out.println("Ingrese el nombre de la Productora a consultar: ");
+                    ProductoraBuscar = leer.readLine().toLowerCase();
+                    peli.ConsultarProductora(ProductoraBuscar, listaPeliculas);
+                    break;
+
+                default:
+                    System.out.println("Opción Inválida, intente de nuevo: ");
+                    break;
+            }
+        }while(opcion != 4);
     }
 
    static private Artista asignarObra(List<Artista> listArtista) throws IOException {

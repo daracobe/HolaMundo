@@ -5,6 +5,7 @@
 package practicajava;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.List;
 /**
  *
  * @author Oswaldo
@@ -19,6 +20,10 @@ public class Pelicula extends Obra {
         this.setAnioEdicion(anioEdicion);
         this.productora = productora;
         this.interpretes = interpretes;
+    }
+
+    Pelicula(){
+    
     }
     
     public Artista[] getInterpretes(){
@@ -58,13 +63,29 @@ public class Pelicula extends Obra {
         cant_interpretes = Integer.parseInt(leer.readLine());
         Artista[] inerterpretes = new Artista[cant_interpretes];
             for (int cInter = 0; cInter < cant_interpretes; cInter++) {
-                System.out.println("Ingresar Nombre del artista:");
+                System.out.println("Ingresar Nombre del Interprete:");
                 nombre_a = leer.readLine();
-                System.out.println("Ingresar Año de nacimiento del artista:");
+                System.out.println("Ingresar Año de nacimiento del Interprete:");
                 anio_Nacimiento = Integer.parseInt(leer.readLine());
                 interpretes[cInter].setnombre(nombre_a);
                 interpretes[cInter].setanonacimiento(anio_Nacimiento);
             }
 
+    }
+    
+    public void BuscarPelicula(String PeliculaBuscar, List<Pelicula> listaPeliculas) {
+        for (Pelicula elemento : listaPeliculas){
+            if(PeliculaBuscar.equals(elemento.getTitulo().toLowerCase())){
+                elemento.imprimir();
+            }
+        }
+    }
+    
+    public void ConsultarProductora(String ProductoraBuscar, List<Pelicula> listaPeliculas){
+        for (Pelicula elemento : listaPeliculas){
+            if(ProductoraBuscar.equals(elemento.getProductora().toLowerCase())){
+                System.out.println("Productora: " + elemento.getProductora());
+            }
+        }
     }
 }
