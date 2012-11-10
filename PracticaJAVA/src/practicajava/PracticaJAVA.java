@@ -37,10 +37,10 @@ public class PracticaJAVA {
         Artista auxArtista = new Artista();
 
     do{
-        System.out.println("1.- Ingresar Artista");
-        System.out.println("2.- Ingresar Obras");
-        System.out.println("3.- Ingresar Disco");
-        System.out.println("4.- Ingresar Pelicula");
+        System.out.println("1.- Crear Artista");
+        System.out.println("2.- Obra");
+        System.out.println("3.- Película");
+        System.out.println("4.- Reportes");
         System.out.println("5.- Salir" + "\n");
 
         InputStreamReader lector = new InputStreamReader(System.in);
