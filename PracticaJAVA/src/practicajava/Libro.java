@@ -67,8 +67,7 @@ public class Libro extends Obra {
 
 
     public void cargarDatos(Artista nombre_artista) throws IOException{
-        BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
-        super.cargarDatos();
+        BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));        super.cargarDatos();
         this.artistaNombre = nombre_artista.getnombre();
 
         System.out.println("Ingrese editorial");
