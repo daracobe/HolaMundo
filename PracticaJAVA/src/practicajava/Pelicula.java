@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Pelicula extends Obra {
     private String productora;
-    private Artista[] interpretes;
+    private Artista[] interpretes = null;
    
     public Pelicula(String titulo, Artista autor, int anioEdicion, String productora, Artista[] interpretes) {
         this.setTitulo(titulo);
@@ -61,14 +61,18 @@ public class Pelicula extends Obra {
         this.productora = leer.readLine();
         System.out.println("Ingrese cantidad de interpretes a cargar: ");
         cant_interpretes = Integer.parseInt(leer.readLine());
-        Artista[] inerterpretes = new Artista[cant_interpretes];
+             interpretes = new Artista[cant_interpretes];
+             Artista auxiliarArtista = new Artista();
             for (int cInter = 0; cInter < cant_interpretes; cInter++) {
                 System.out.println("Ingresar Nombre del Interprete:");
                 nombre_a = leer.readLine();
                 System.out.println("Ingresar Año de nacimiento del Interprete:");
                 anio_Nacimiento = Integer.parseInt(leer.readLine());
-                interpretes[cInter].setnombre(nombre_a);
-                interpretes[cInter].setanonacimiento(anio_Nacimiento);
+                auxiliarArtista.setnombre(nombre_a);
+                auxiliarArtista.setanonacimiento(anio_Nacimiento);
+                interpretes[cInter] = auxiliarArtista;
+               // interpretes[cInter].setnombre(nombre_a);
+               // interpretes[cInter].setanonacimiento(anio_Nacimiento);
             }
 
     }
