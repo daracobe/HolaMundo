@@ -4,6 +4,7 @@
  */
 package practicajava;
 import java.io.*;
+import java.util.ArrayList;
 /**
  *
  * @author Oswaldo
@@ -44,12 +45,26 @@ public class Pelicula extends Obra {
         System.out.println("Productora: " + this.getProductora());
     }
     
-    public void cargarDatos() throws IOException{
+    public void cargarDatos(Artista nombre_artista) throws IOException{
+        int cant_interpretes = 0;
+        int anio_Nacimiento = 0;
+        String nombre_a = "";
+        
         BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
         super.cargarDatos();
         System.out.println("Ingrese Productora: ");
         this.productora = leer.readLine();
-        System.out.println("Ingrese Interpretes: ");
-        //this.interpretes = leer.readLine();
+        System.out.println("Ingrese cantidad de interpretes a cargar: ");
+        cant_interpretes = Integer.parseInt(leer.readLine());
+        Artista[] inerterpretes = new Artista[cant_interpretes];
+            for (int cInter = 0; cInter < cant_interpretes; cInter++) {
+                System.out.println("Ingresar Nombre del artista:");
+                nombre_a = leer.readLine();
+                System.out.println("Ingresar Año de nacimiento del artista:");
+                anio_Nacimiento = Integer.parseInt(leer.readLine());
+                interpretes[cInter].setnombre(nombre_a);
+                interpretes[cInter].setanonacimiento(anio_Nacimiento);
+            }
+
     }
 }
