@@ -21,6 +21,7 @@ public class PracticaJAVA {
 
     private static List<Libro> listaLibros = null;
     private static List<Pelicula> listaPeliculas = null;
+    private static List<Artista> listaArtista = null;
     private static Artista Artista;
 
     public static void main(String[] args) throws IOException {
@@ -33,11 +34,8 @@ public class PracticaJAVA {
         String nombre_a = "";
         String titulo = "";
 
-        List<Artista> listaArtista = null;
-
-        
-
     do{
+        System.out.println("Menú");
         System.out.println("1.- Crear Artista");
         System.out.println("2.- Obra");
         System.out.println("3.- Película");
@@ -53,16 +51,16 @@ public class PracticaJAVA {
         {
             case 1:
                 listaArtista = new ArrayList<Artista>();
-                System.out.println("Ingrese Cantidad de artistas:");
+                System.out.println("Ingrese Cantidad de Artistas:");
                 max_artista = Integer.parseInt(leer.readLine());
-
+                nro_artista = 0; //faltaba esto
                 while(nro_artista < max_artista)
                 {
                   Artista auxArtista = new Artista();
-                    System.out.println("Ingresar Nombre del artista:");
+                    System.out.println("Ingresar Nombre del Artista ["+(nro_artista+1)+"]:");
                   nombre_a = leer.readLine();
 
-                  System.out.println("Ingresar Año de nacimiento del artista:");
+                  System.out.println("Ingresar Año de Nacimiento del Artista ["+(nro_artista+1)+"]:");
                   anio_Nacimiento = Integer.parseInt(leer.readLine());
 
                   nro_artista ++;
@@ -76,14 +74,11 @@ public class PracticaJAVA {
                 break;
 
             case 2:
-                Artista auxArtista = new Artista();
-                auxArtista = asignarObra(listaArtista);
-                subMenuObra(auxArtista);
+                subMenuObra(listaArtista);
                 break;
 
             case 3:
-                auxArtista = asignarObra(listaArtista);
-                subMenuPelicula(auxArtista);
+                subMenuPelicula(listaArtista);
                 break;
             case 4:
 
@@ -96,7 +91,7 @@ public class PracticaJAVA {
         }while(opcion != 5);
     }
 
-   static public void subMenuObra(Artista objArtista) throws IOException {
+   static public void subMenuObra(List<Artista> listaArtista) throws IOException {
         int opcion = 0;
         int maximoElementos = 0;
         Libro libro;
@@ -126,9 +121,12 @@ public class PracticaJAVA {
                     listaLibros = new ArrayList<Libro>();
 
                     for (int i = 0; i < maximoElementos; i++) {
+                        System.out.println("Libro ["+(i+1)+"]: ");
+                        Artista auxArtista = new Artista();
+                        auxArtista = asignarObra(listaArtista);
                         libro = new Libro();
                         //Enviarle a libros el artista
-                        libro.cargarDatos(objArtista);
+                        libro.cargarDatos(auxArtista);
                         listaLibros.add(libro);
                     }
 
@@ -159,11 +157,10 @@ public class PracticaJAVA {
             }
         }while(opcion != 9);
     }
-   
-   static public void subMenuPelicula(Artista objArtista) throws IOException {
+   static public void subMenuPelicula(List<Artista> listaArtista) throws IOException {
         int opcion = 0;
         int CantPeliculas = 0;
-        Pelicula peli = new Pelicula();
+        Pelicula peli;
         InputStreamReader lector = new InputStreamReader(System.in);
         BufferedReader leer = new BufferedReader(lector);
 
@@ -178,17 +175,23 @@ public class PracticaJAVA {
 
             switch (opcion){
                 case 1:
+                     
                     System.out.println("Ingrese cantidad de peliculas a cargar: ");
                     CantPeliculas = Integer.parseInt(leer.readLine());
                     listaPeliculas = new ArrayList<Pelicula>();
                     for (int cPeli = 0; cPeli < CantPeliculas; cPeli++) {
-                        peli.cargarDatos(objArtista);
+                        System.out.println("Película ["+(cPeli+1)+"]: ");
+                        Artista auxArtista = new Artista();
+                        auxArtista = asignarObra(listaArtista);
+                        peli = new Pelicula();
+                        peli.cargarDatos(auxArtista);
                         listaPeliculas.add(peli);
                     }
                     System.out.println("¡Carga exitosa!");
                     break;
                 case 2:
                     String PeliculaBuscar ;
+                    peli = new Pelicula();
                     System.out.println("Ingrese nombre de la Película a buscar: ");
                     PeliculaBuscar = leer.readLine().toLowerCase();
                     peli.BuscarPelicula(PeliculaBuscar, listaPeliculas);
@@ -196,6 +199,7 @@ public class PracticaJAVA {
 
                 case 3:
                     String ProductoraBuscar ;
+                    peli = new Pelicula();
                     System.out.println("Ingrese el nombre de la Productora a consultar: ");
                     ProductoraBuscar = leer.readLine().toLowerCase();
                     peli.ConsultarProductora(ProductoraBuscar, listaPeliculas);
@@ -215,7 +219,7 @@ public class PracticaJAVA {
         InputStreamReader lector = new InputStreamReader(System.in);
         BufferedReader   leer = new BufferedReader(lector);
 
-        System.out.println("Ingrese nombre del artista de las obras: ");
+        System.out.println("Ingrese nombre del artista de la obra: ");
         nombArtista = leer.readLine();
 
         int posArtista = 0;

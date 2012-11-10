@@ -13,6 +13,7 @@ import java.util.List;
 public class Pelicula extends Obra {
     private String productora;
     private Artista[] interpretes = null;
+    private String artistaNombre;
    
     public Pelicula(String titulo, Artista autor, int anioEdicion, String productora, Artista[] interpretes) {
         this.setTitulo(titulo);
@@ -43,10 +44,13 @@ public class Pelicula extends Obra {
     }
     
     public void imprimir() {
-        System.out.println("Título: " + this.getTitulo());
-        System.out.println("Autor: " + this.getAutor());
+        System.out.println("Artista: " + this.artistaNombre);
+        System.out.println("Título de la Película: " + this.getTitulo());
         System.out.println("Año de Edición: " + this.getAnioEdicion());
-        System.out.println("Interpretes: " + this.getInterpretes());
+        System.out.println("Interpretes: "); 
+        for (int i = 0; i < interpretes.length  ; i++) {
+            System.out.println("["+(i+1)+"]"+ this.interpretes[i].getnombre()+" - Año Nacimiento: "+this.interpretes[i].getanonacimiento());
+        }
         System.out.println("Productora: " + this.getProductora());
     }
     
@@ -54,25 +58,25 @@ public class Pelicula extends Obra {
         int cant_interpretes = 0;
         int anio_Nacimiento = 0;
         String nombre_a = "";
-        
+
         BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
         super.cargarDatos();
+        this.artistaNombre = nombre_artista.getnombre();
         System.out.println("Ingrese Productora: ");
         this.productora = leer.readLine();
         System.out.println("Ingrese cantidad de interpretes a cargar: ");
         cant_interpretes = Integer.parseInt(leer.readLine());
              interpretes = new Artista[cant_interpretes];
-             Artista auxiliarArtista = new Artista();
+             
             for (int cInter = 0; cInter < cant_interpretes; cInter++) {
-                System.out.println("Ingresar Nombre del Interprete:");
+                System.out.println("Ingresar Nombre del Interprete ["+(cInter+1)+"]:");
                 nombre_a = leer.readLine();
-                System.out.println("Ingresar Año de nacimiento del Interprete:");
+                System.out.println("Ingresar año de nacimiento del Interprete ["+(cInter+1)+"]:");
                 anio_Nacimiento = Integer.parseInt(leer.readLine());
+                Artista auxiliarArtista = new Artista();
                 auxiliarArtista.setnombre(nombre_a);
                 auxiliarArtista.setanonacimiento(anio_Nacimiento);
                 interpretes[cInter] = auxiliarArtista;
-               // interpretes[cInter].setnombre(nombre_a);
-               // interpretes[cInter].setanonacimiento(anio_Nacimiento);
             }
 
     }

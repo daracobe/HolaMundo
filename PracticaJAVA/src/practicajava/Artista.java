@@ -37,7 +37,7 @@ public class Artista {
      */
     public void setanonacimiento(int anon)
     {
-        anon = anioNacimiento;
+        anioNacimiento = anon;
     }
 
     public int getanonacimiento()
