@@ -52,7 +52,7 @@ public class PracticaJAVA {
                     listaArtista = new ArrayList<Artista>();
                     System.out.println("Ingrese Cantidad de Artistas:");
                     max_artista = Integer.parseInt(leer.readLine());
-                    nro_artista = 0; //faltaba esto
+                    nro_artista = 0; 
                     while (nro_artista < max_artista) {
                         Artista auxArtista = new Artista();
                         System.out.println("Ingresar Nombre del Artista [" + (nro_artista + 1) + "]:");
@@ -81,12 +81,14 @@ public class PracticaJAVA {
                 case 4:
                     subMenuReportes(listaArtista, ListaDiscos, listaLibros, listaPeliculas);
 
+                case 5:
+                    break;
                 default:
-                    System.out.println("Opción inválida.");
+                    System.out.println("Opción inválida. Intente de nuevo");
 
             }
 
-        } while (opcion != 5);
+        } while (opcion != 6);
     }
 
     static public void subMenuObra(List<Artista> listaArtista) throws IOException {
@@ -100,16 +102,16 @@ public class PracticaJAVA {
         BufferedReader leer = new BufferedReader(lector);
 
         do {
-            System.out.println("Sub-menú de Obra\n");
-            System.out.println(" Obra");
+            System.out.println("Sub-menú de Obra:\n");
+            System.out.println(" Obra:");
             System.out.println("    1.- Crear libro");
             System.out.println("    2.- Buscar libro");
             System.out.println("    3.- Consultar editorial y páginas");
-            System.out.println(" Disco");
+            System.out.println(" Disco:");
             System.out.println("    4.- Crear disco");
             System.out.println("    5.- Buscar disco");
             System.out.println("    6.- Consultar discográfica y canciones");
-            System.out.println("9.- Salir");
+            System.out.println("7.- Salir" + "\n");
 
             opcion = Integer.parseInt(leer.readLine());
 
@@ -167,7 +169,7 @@ public class PracticaJAVA {
                     System.out.println("¡Carga exitosa!");
                     break;
                 case 5:
-                    String TituloABuscar;
+                   
                     System.out.println("Ingrese el título del disco a buscar: ");
                     tituloBuscar = leer.readLine();
                     disco = new Disco();
@@ -180,11 +182,12 @@ public class PracticaJAVA {
                     disco = new Disco();
                     disco.consultarDiscografica(DiscograficaBuscada, ListaDiscos);
                     break;
+               
                 default:
-                    System.out.println("Opción Inválida, intente de nuevo: ");
+                    System.out.println("Intente de nuevo: " + "\n");
                     break;
             }
-        } while (opcion != 9);
+        } while (opcion != 7);
     }
 
     static public void subMenuPelicula(List<Artista> listaArtista) throws IOException {
@@ -195,7 +198,7 @@ public class PracticaJAVA {
         BufferedReader leer = new BufferedReader(lector);
 
         do {
-            System.out.println("Sub-menú de Película\n");
+            System.out.println("\n" + "Sub-menú de Película\n");
             System.out.println(" 1.- Crear Película");
             System.out.println(" 2.- Buscar Película");
             System.out.println(" 3.- Consultar Productora");
@@ -275,12 +278,12 @@ public class PracticaJAVA {
 
 
         do {
-            System.out.println("Sub-menú de Reportes\n");
+            System.out.println("\n" + "Sub-menú de Reportes\n");
             System.out.println(" 1.- Listado de Obras");
             System.out.println(" 2.- Listado de Películas");
             System.out.println(" 3.- Buscar todas las obras de un autor");
             System.out.println(" 4.- Buscar todas las películas de un autor");
-            System.out.println(" 5.- Salir");
+            System.out.println(" 5.- Salir" + "\n");
             opcion = Integer.parseInt(leer.readLine());
 
             switch (opcion) {
@@ -316,14 +319,15 @@ public class PracticaJAVA {
                     break;
 
                 case 3:
-                    String AutorABuscar = null;
+                    String AutorABuscar = "";
                     System.out.println("Indique el autor:");
-                    AutorABuscar = leer.readLine();
+                    AutorABuscar = leer.readLine().toLowerCase();
                     System.out.println("LIBROS");
                     for (Libro elemento : listaLibros) {
-                        if (elemento.getAutor().getnombre().toLowerCase().equals(AutorABuscar.toLowerCase())) {
-                            elemento.imprimir();
-                        }
+
+                       if (elemento.getAutor().getnombre().toLowerCase().equals(AutorABuscar.toLowerCase())) {
+                           elemento.imprimir();
+                       }
                     }
                     System.out.println("DISCOS");
                     for (Disco elemento : ListaDiscos) {
@@ -344,10 +348,12 @@ public class PracticaJAVA {
                         }
                     }
                     break;
+                case 5:
+                    break;
                 default:
                     System.out.println("Opción Inválida, intente de nuevo: ");
                     break;
             }
-        } while (opcion != 4);
+        } while (opcion != 5);
     }
 }

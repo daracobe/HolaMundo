@@ -25,10 +25,11 @@ public class Libro extends Obra {
         this.nPaginas = paginas;
     }
 
+    
     String getEditorial( ){
         return this.editorial;
     }
-
+    
     void setEditorial( String edit ){
         this.editorial = edit;
     }
@@ -41,7 +42,7 @@ public class Libro extends Obra {
         for(int i = 0; i < vector.length; i++){
                 vector[i] = new Libro();
 
-                System.out.println("Ingrese el nombre del artista del libro");
+                System.out.println("Ingrese el nombre del artista del libro [" + (i + 1) + "]:");
                 artista.setnombre(lector.readLine());
                 vector[i].cargarDatos(artista);
         }
@@ -67,7 +68,8 @@ public class Libro extends Obra {
 
 
     public void cargarDatos(Artista nombre_artista) throws IOException{
-        BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));        super.cargarDatos();
+        BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));        
+        super.cargarDatos();
         this.artistaNombre = nombre_artista.getnombre();
 
         System.out.println("Ingrese editorial");
@@ -75,7 +77,7 @@ public class Libro extends Obra {
         System.out.println("Ingrese número de páginas");
         this.nPaginas = Integer.parseInt(leer.readLine());
     }
-
+    
     public void buscar(String tituloBuscar, List<Libro> listaLibros) {
 
         for (Libro elemento : listaLibros) // or sArray
