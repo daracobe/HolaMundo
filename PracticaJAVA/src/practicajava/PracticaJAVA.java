@@ -335,6 +335,8 @@ public class PracticaJAVA {
                     break;
                 case 4:
                     String AutorBuscado = null;
+                    System.out.println("Indique el autor:");
+                    AutorBuscado = leer.readLine();
                     System.out.println("PELICULAS");
                     for (Pelicula elemento : listaPeliculas) {
                         if (elemento.getAutor().getnombre().toLowerCase().equals(AutorBuscado.toLowerCase())) {
