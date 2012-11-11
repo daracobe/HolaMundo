@@ -5,6 +5,7 @@
 package practicajava;
 
 import java.io.*;
+import java.util.List;
 
 /**
  *
@@ -14,6 +15,7 @@ public class Disco extends Obra {
 
     private String discografica;
     private int nCanciones;
+    private String ArtistaNombre;
 
     public Disco(String titulo, Artista autor, int anioEdicion, String discografia, int nCanciones) {
         //super(titulo,autor,anioEdicion);
@@ -22,6 +24,10 @@ public class Disco extends Obra {
         this.setAnioEdicion(anioEdicion);
         this.discografica = discografia;
         this.nCanciones = nCanciones;
+    }
+    
+    public Disco(){
+    
     }
 
     public String getDiscografica() {
@@ -48,9 +54,10 @@ public class Disco extends Obra {
         System.out.println("Número de Canciones: " + this.getNCanciones());
     }
 
-    public void cargarDatos() throws IOException {
+    public void cargarDatos(Artista artista) throws IOException {
         BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
         super.cargarDatos();
+        this.ArtistaNombre = artista.getnombre();
 
         System.out.println("Ingrese Discográfica");
         this.discografica = leer.readLine();
@@ -64,35 +71,27 @@ public class Disco extends Obra {
         BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
 
         for (int i = 0; i < discos.length; i++) {
-            discos[i].setAutor(autor);
-            System.out.println("Ingrese Título: ");
-            discos[i].setTitulo(leer.readLine());
-            System.out.println("Ingrese Año de Edición: ");
-            discos[i].setAnioEdicion(Integer.parseInt(leer.readLine()));
-            System.out.println("Ingrese Empresa Discográfica: ");
-            discos[i].setDiscografica(leer.readLine());
-            System.out.println("Ingrese el Número de Canciones: ");
-            discos[i].setNCanciones(Integer.parseInt(leer.readLine()));
+            discos[i] = new Disco();           
+            discos[i].cargarDatos(autor);            
         }
 
         return discos;
     }
 
-    public void buscar(String Titulo, Disco[] discos) {
-        for (int i = 0; i < discos.length; i++) {
-            if (discos[i].getTitulo().toLowerCase().equals(Titulo.toLowerCase())) {
-                discos[i].imprimir();
+    public void buscar( String Titulo, List<Disco> listaDiscos) {
+        
+        for (Disco elemento : listaDiscos) // or sArray
+        {
+            if(Titulo.toLowerCase().equals(elemento.getTitulo().toLowerCase())){
+                elemento.imprimir();
             }
-
-        }
+        }        
     }
 
-    public void consultarDiscografica(String Discografica, Disco[] discos) {
-        for (int i = 0; i < discos.length; i++) {
-            if (discos[i].getDiscografica().toLowerCase().equals(Discografica.toLowerCase())) {
-                System.out.println("Título: " + discos[i].getTitulo() + ", Número de canciones: " + discos[i].getNCanciones());
-            }
-
-        }
+    public void consultarDiscografica(String Discografica, List<Disco> listaDiscos) {
+        for (Disco elemento : listaDiscos){
+            if(elemento.getDiscografica().toLowerCase().equals(Discografica.toLowerCase()))
+                System.out.println("Título: " + elemento.getTitulo() + ", Número de canciones: " + elemento.getNCanciones());
+        }        
     }
 }
