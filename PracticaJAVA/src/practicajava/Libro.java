@@ -59,7 +59,7 @@ public class Libro extends Obra {
     }
 
     void imprimir( ){
-        System.out.println("Artista: " + this.artistaNombre);
+        System.out.println("Artista: " + this.getAutor().getnombre());
         System.out.println("Titulo: " + this.getTitulo( ) );
         System.out.println("Año de edición:  " + this.getAnioEdicion() );
         System.out.println("Editorial:  " + this.getEditorial() );
@@ -69,7 +69,7 @@ public class Libro extends Obra {
 
     public void cargarDatos(Artista nombre_artista) throws IOException{
         BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));        
-        super.cargarDatos();
+        super.cargarDatos(nombre_artista);
         this.artistaNombre = nombre_artista.getnombre();
 
         System.out.println("Ingrese editorial");

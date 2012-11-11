@@ -47,7 +47,7 @@ public class Disco extends Obra {
     }
 
     public void imprimir() {
-        System.out.println("Artista: " + this.ArtistaNombre);
+        System.out.println("Artista: " + this.getAutor().getnombre());
         System.out.println("Título del Disco: " + this.getTitulo());
         System.out.println("Año de Edición: " + this.getAnioEdicion());
         System.out.println("Empresa Discografica: " + this.getDiscografica());
@@ -56,7 +56,7 @@ public class Disco extends Obra {
 
     public void cargarDatos(Artista artista) throws IOException {
         BufferedReader leer = new BufferedReader(new InputStreamReader(System.in));
-        super.cargarDatos();
+        super.cargarDatos(artista);
         this.ArtistaNombre = artista.getnombre();
 
         System.out.println("Ingrese Discográfica");

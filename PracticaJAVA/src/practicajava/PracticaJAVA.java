@@ -33,6 +33,10 @@ public class PracticaJAVA {
         int opcion = 0;
         String nombre_a = "";
         String titulo = "";
+        listaArtista = new ArrayList<Artista>();
+        listaLibros = new ArrayList<Libro>();
+        ListaDiscos = new ArrayList<Disco>();
+        listaPeliculas = new ArrayList<Pelicula>();
 
         do {
             System.out.println("Menú");
@@ -49,7 +53,7 @@ public class PracticaJAVA {
 
             switch (opcion) {
                 case 1:
-                    listaArtista = new ArrayList<Artista>();
+
                     System.out.println("Ingrese Cantidad de Artistas:");
                     max_artista = Integer.parseInt(leer.readLine());
                     nro_artista = 0; 
@@ -80,7 +84,6 @@ public class PracticaJAVA {
                     break;
                 case 4:
                     subMenuReportes(listaArtista, ListaDiscos, listaLibros, listaPeliculas);
-
                 case 5:
                     break;
                 default:
@@ -88,7 +91,7 @@ public class PracticaJAVA {
 
             }
 
-        } while (opcion != 6);
+        } while (opcion != 5);
     }
 
     static public void subMenuObra(List<Artista> listaArtista) throws IOException {
@@ -96,6 +99,7 @@ public class PracticaJAVA {
         int maximoElementos = 0;
         Libro libro;
         Disco disco;
+        
 
 
         InputStreamReader lector = new InputStreamReader(System.in);
@@ -119,7 +123,7 @@ public class PracticaJAVA {
                 case 1:
                     System.out.println("Ingrese cantidad de libros a cargar: ");
                     maximoElementos = Integer.parseInt(leer.readLine());
-                    listaLibros = new ArrayList<Libro>();
+                   
 
                     for (int i = 0; i < maximoElementos; i++) {
                         System.out.println("Libro [" + (i + 1) + "]: ");
@@ -154,7 +158,7 @@ public class PracticaJAVA {
                 case 4:
                     System.out.println("Ingrese cantidad de discos a cargar: ");
                     maximoElementos = Integer.parseInt(leer.readLine());
-                    ListaDiscos = new ArrayList<Disco>();
+                    
 
                     for (int i = 0; i < maximoElementos; i++) {
                         System.out.println("Disco [" + (i + 1) + "]: ");
@@ -211,7 +215,7 @@ public class PracticaJAVA {
 
                     System.out.println("Ingrese cantidad de peliculas a cargar: ");
                     CantPeliculas = Integer.parseInt(leer.readLine());
-                    listaPeliculas = new ArrayList<Pelicula>();
+                    
                     for (int cPeli = 0; cPeli < CantPeliculas; cPeli++) {
                         System.out.println("Película [" + (cPeli + 1) + "]: ");
                         Artista auxArtista = new Artista();
@@ -294,6 +298,7 @@ public class PracticaJAVA {
                     try {
                         for (Libro elemento : listaLibros) {
                             elemento.imprimir();
+                            System.out.println("");
                         }
                     } catch (NullPointerException excepcion) {
                         System.out.println("No hay libros registrados");
@@ -302,6 +307,7 @@ public class PracticaJAVA {
                     try {
                         for (Disco elemento : ListaDiscos) {
                             elemento.imprimir();
+                            System.out.println("");
                         }
                     } catch (NullPointerException excepcion) {
                         System.out.println("No hay Discos registrados.");
@@ -311,6 +317,7 @@ public class PracticaJAVA {
                     try{
                     for (Pelicula elemento : listaPeliculas) {
                         elemento.imprimir();
+                        System.out.println("");
                     }
                     }catch(NullPointerException excepcion){
                         System.out.println("No hay Peliculas registradas.");
@@ -322,17 +329,22 @@ public class PracticaJAVA {
                     String AutorABuscar = "";
                     System.out.println("Indique el autor:");
                     AutorABuscar = leer.readLine().toLowerCase();
-                    System.out.println("LIBROS");
+                    System.out.println("LIBROS");                    
                     for (Libro elemento : listaLibros) {
-
+                        try{
                        if (elemento.getAutor().getnombre().toLowerCase().equals(AutorABuscar.toLowerCase())) {
                            elemento.imprimir();
+                           System.out.println("");
                        }
+                        }catch(Exception excepcion){
+                            System.out.println("elemento: " + elemento.getAutor().getnombre());
+                        }
                     }
                     System.out.println("DISCOS");
                     for (Disco elemento : ListaDiscos) {
                         if (elemento.getAutor().getnombre().toLowerCase().equals(AutorABuscar.toLowerCase())) {
                             elemento.imprimir();
+                            System.out.println("");
                         }
                     }
 
@@ -342,14 +354,17 @@ public class PracticaJAVA {
                     System.out.println("Indique el autor:");
                     AutorBuscado = leer.readLine();
                     System.out.println("PELICULAS");
+                    try{
                     for (Pelicula elemento : listaPeliculas) {
                         if (elemento.getAutor().getnombre().toLowerCase().equals(AutorBuscado.toLowerCase())) {
                             elemento.imprimir();
+                            System.out.println("");
                         }
                     }
-                    break;
-                case 5:
-                    break;
+                    }catch(NullPointerException excepcion){
+                        System.out.println("No hay peliculas registradas.");
+                    }
+                    break;                
                 default:
                     System.out.println("Opción Inválida, intente de nuevo: ");
                     break;

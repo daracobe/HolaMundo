@@ -54,9 +54,9 @@ public class Obra {
         anioEdicion = anioE;
     }
 
-    public void cargarDatos() throws IOException{
+    public void cargarDatos(Artista Autor) throws IOException{
         BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
-
+        this.autor = Autor;
         System.out.println("Ingrese titulo de la obra");
         this.titulo = leer.readLine();
         System.out.println("Ingrese año de edicion");

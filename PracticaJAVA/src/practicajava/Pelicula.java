@@ -43,7 +43,7 @@ public class Pelicula extends Obra {
     }
     
     public void imprimir() {
-        System.out.println("Artista: " + this.artistaNombre);
+        System.out.println("Artista: " + this.getAutor().getnombre());
         System.out.println("Título de la Película: " + this.getTitulo());
         System.out.println("Año de Edición: " + this.getAnioEdicion());
         System.out.println("Interpretes: "); 
@@ -59,7 +59,7 @@ public class Pelicula extends Obra {
         String nombre_a = "";
 
         BufferedReader leer = new BufferedReader( new InputStreamReader(System.in));
-        super.cargarDatos();
+        super.cargarDatos(nombre_artista);
         this.artistaNombre = nombre_artista.getnombre();
         System.out.println("Ingrese Productora: ");
         this.productora = leer.readLine();
