@@ -47,8 +47,8 @@ public class Disco extends Obra {
     }
 
     public void imprimir() {
-        System.out.println("Título: " + this.getTitulo());
-        System.out.println("Autor: " + this.getAutor());
+        System.out.println("Artista: " + this.ArtistaNombre);
+        System.out.println("Título del Disco: " + this.getTitulo());
         System.out.println("Año de Edición: " + this.getAnioEdicion());
         System.out.println("Empresa Discografica: " + this.getDiscografica());
         System.out.println("Número de Canciones: " + this.getNCanciones());
