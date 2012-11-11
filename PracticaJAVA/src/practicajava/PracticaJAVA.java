@@ -252,7 +252,6 @@ public class PracticaJAVA {
     static private Artista asignarObra(List<Artista> listArtista) throws IOException {
 
         String nombArtista;
-
         InputStreamReader lector = new InputStreamReader(System.in);
         BufferedReader leer = new BufferedReader(lector);
 
@@ -261,18 +260,18 @@ public class PracticaJAVA {
 
         int posArtista = 0;
 
-        //Busco el Artista a asignar la Obra
+        //Busco el Artista a asignar la Obra        
         for (int cArtis = 0; cArtis < listArtista.size(); cArtis++) {
             if (listArtista.get(cArtis).getnombre().equals(nombArtista)) {
                 posArtista = cArtis;
                 break;
             }
         }
-
+        
         return listArtista.get(posArtista);
-
+                    
     }
-
+              
     private static void subMenuReportes(List<Artista> listaArtista, List<Disco> ListaDiscos, List<Libro> listaLibros, List<Pelicula> listaPeliculas) throws IOException {
         int opcion = 0;
         int CantPeliculas = 0;
